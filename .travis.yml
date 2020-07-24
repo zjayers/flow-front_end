@@ -1,0 +1,11 @@
+sudo: required
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - docker build -t zjayers/flow-front_end -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true zjayers/flow-front_end npm run test
