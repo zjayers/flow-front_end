@@ -9,3 +9,15 @@ before_install:
 
 script:
   - docker run -e CI=true zjayers/flow-front_end npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "flow-front_endx"
+  env: "FlowFrontEndx-env"
+  bucket_name: "elasticbeanstalk-us-east-2-745585555564"
+  bucket_path: "flow-front_endx"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
